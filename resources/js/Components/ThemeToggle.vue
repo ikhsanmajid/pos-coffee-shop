@@ -15,32 +15,21 @@
 </template>
 
 <script setup>
-import { ref, onMounted } from 'vue';
+import { onMounted, computed } from 'vue';
+import { useTheme } from '../Components/Shared/Composable/useTheme';
 
-const isDark = ref(false);
+const { theme, setTheme, toggleTheme } = useTheme();
 
-const toggleTheme = () => {
-    isDark.value = !isDark.value;
-    if (isDark.value) {
-        document.documentElement.classList.add('dark');
-        localStorage.setItem('theme', 'dark');
-    } else {
-        document.documentElement.classList.remove('dark');
-        localStorage.setItem('theme', 'light');
-    }
-};
+const isDark = computed(() => theme.value === 'dark');
 
 onMounted(() => {
-    // Cek local storage atau preferensi sistem browser
-    const savedTheme = localStorage.getItem('theme');
+    const savedTheme = theme.value;
     const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
 
     if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
-        isDark.value = true;
-        document.documentElement.classList.add('dark');
+        setTheme('dark');
     } else {
-        isDark.value = false;
-        document.documentElement.classList.remove('dark');
+        setTheme('light');
     }
 });
 </script>

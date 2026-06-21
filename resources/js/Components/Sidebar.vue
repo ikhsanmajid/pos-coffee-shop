@@ -48,7 +48,7 @@ const menus = [
     },
     {
         name: 'Profile',
-        route: 'dashboard', // Contoh route profile asli
+        route: 'profile', // Contoh route profile asli
         permission: [],
         icon: User,
     },
@@ -58,20 +58,20 @@ const menus = [
     },
     {
         name: 'User Management',
-        route: 'dashboard', // Contoh route user asli
+        route: 'users', // Contoh route user asli
         permission: ['users:view'],
         icon: Users,
     },
     {
         name: 'Roles Management',
         route: 'dashboard', // Contoh route roles asli
-        permission: ['roles:view'],
+        permission: ['users:view'],
         icon: ShieldCheck,
     },
     {
         name: 'Permissions',
         route: 'dashboard', // Contoh route permissions asli
-        permission: ['permissions:view'],
+        permission: ['users:view'],
         icon: KeyRound,
     },
 ];
@@ -79,7 +79,7 @@ const menus = [
 
 <template>
     <aside :class="[
-        'fixed top-0 bottom-0 left-0 z-50 bg-white dark:bg-gradient-to-b dark:from-gray-900 dark:via-gray-900 dark:to-gray-950 border-r border-gray-200 dark:border-none transform transition-all duration-300 ease-in-out flex flex-col',
+        'fixed top-0 bottom-0 left-0 z-50 bg-white dark:bg-gradient-to-b dark:from-gray-900 dark:via-gray-900 dark:to-gray-950 border-r border-gray-200 dark:border-none transform transition-all duration-500 ease-in-out flex flex-col',
         isMobile
             ? isOpen ? 'w-64 translate-x-0' : 'w-64 -translate-x-full'
             : isOpen ? 'w-64 translate-x-0' : 'w-20 translate-x-0',
@@ -135,12 +135,16 @@ const menus = [
         </nav>
 
         <div class="px-4 py-3 border-t border-gray-100 dark:border-white/[0.06] shrink-0">
-            <div v-show="isMobile || isOpen" class="flex items-center gap-2">
-                <div class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></div>
-                <span class="text-[10px] text-gray-400 dark:text-gray-500 font-medium">Online — v1.0.0</span>
+            <div v-show="isMobile" class="flex items-center gap-2">
+                <span class="text-[10px] text-gray-400 dark:text-gray-500 font-medium">Made With Love - Syaharudin
+                    Ikhsan</span>
             </div>
-            <div v-show="!(isMobile || isOpen)" class="flex justify-center">
-                <div class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></div>
+            <div v-show="(!isMobile && isOpen)" class="flex justify-center">
+                <span class="text-[10px] text-gray-400 dark:text-gray-500 font-medium">Made With Love - Syaharudin
+                    Ikhsan</span>
+            </div>
+            <div v-show="(!isMobile && !isOpen)" class="flex justify-center">
+                <span class="text-[10px] text-gray-400 dark:text-gray-500 font-medium">By Ikhsan</span>
             </div>
         </div>
     </aside>

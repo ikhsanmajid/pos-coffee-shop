@@ -2,21 +2,19 @@
 import { useForm } from '@inertiajs/vue3';
 import BaseSearchableSelect from '@/Components/Shared/Components/Atoms/BaseSearchableSelect.vue';
 import { useServerSearchSelect } from '@/Components/Shared/Composable/useServerSearchMultiSelect.js';
-import SidebarTest from '@/Components/SidebarTest.vue';
 
-// const form = useForm({
-//     id: null,
-// });
+const form = useForm({
+    id: null,
+});
 
-// const { chosenData: chosenNamaSelect, fetchOptions: optionsNama } = useServerSearchSelect('fetch.test', form, 'id', 'value');
+const { chosenData: chosenNamaSelect, fetchOptions: optionsNama } = useServerSearchSelect('fetch.test', form, 'id', 'value');
 
 </script>
 
 <template>
     <div class="min-h-screen container mx-auto pt-6">
-        <SidebarTest />
         <div class="flex-col">
-            <!-- <div class="p-6 max-w-sm">
+            <div class="p-6 max-w-sm">
 
                 <BaseSearchableSelect v-model="chosenNamaSelect" label="Daftar Permission"
                     placeholder="Pilih permission..." :options="optionsNama" :isLocal="false" :resolveOnLoad="true"
@@ -30,7 +28,7 @@ import SidebarTest from '@/Components/SidebarTest.vue';
                     class="bg-gray-800 p-3 mt-2 rounded-lg text-green-400 text-xs">{{ chosenNamaSelect?.label || 'Belum memilih' }}</pre>
 
                 Form Id: {{ form.id }}
-            </div> -->
+            </div>
         </div>
     </div>
 </template>

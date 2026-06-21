@@ -1,49 +1,30 @@
 <script setup>
-import { ref, onMounted, onUnmounted } from 'vue';
+import { ref, watch, onMounted, onUnmounted } from 'vue';
 import Sidebar from '@/Components/Sidebar.vue';
 import Header from '@/Components/Header.vue';
+import { useBreakpoint } from '@/Components/Shared/Composable/useBreakpoint';
 
 const isSidebarOpen = ref(true);
-const isMobile = ref(false);
-
-let lastWidth = window.innerWidth;
+const { isMobile } = useBreakpoint();
 
 const toggleSidebar = () => {
     isSidebarOpen.value = !isSidebarOpen.value;
 };
 
-const checkBreakpoint = () => {
-    if (window.innerWidth === lastWidth) return;
-    lastWidth = window.innerWidth;
-
-    const prevMobileStatus = isMobile.value;
-    isMobile.value = window.innerWidth < 1024;
-
-    if (prevMobileStatus !== isMobile.value) {
-        if (isMobile.value) {
-            isSidebarOpen.value = false;
-        } else {
-            isSidebarOpen.value = true;
-        }
+watch(isMobile, (mobile, prevMobile) => {
+    if (mobile !== prevMobile) {
+        isSidebarOpen.value = !mobile;
     }
-};
-
-onMounted(() => {
-    isMobile.value = window.innerWidth < 1024;
-    isSidebarOpen.value = window.innerWidth >= 1024;
-    lastWidth = window.innerWidth;
-
-    window.addEventListener('resize', checkBreakpoint);
 });
 
-onUnmounted(() => {
-    window.removeEventListener('resize', checkBreakpoint);
+onMounted(() => {
+    isSidebarOpen.value = !isMobile.value;
 });
 </script>
 
 <template>
     <div
-        class="min-h-screen bg-gray-50 dark:bg-gray-950 text-gray-900 dark:text-gray-100 overflow-x-hidden relative font-sans antialiased">
+        class="min-h-screen bg-gray-50 dark:bg-gray-950 text-gray-900 dark:text-gray-100 relative font-sans antialiased">
 
         <Transition enter-active-class="transition-opacity duration-300 ease-out" enter-from-class="opacity-0"
             enter-to-class="opacity-100" leave-active-class="transition-opacity duration-200 ease-in"
@@ -65,8 +46,8 @@ onUnmounted(() => {
                 </template>
             </Header>
 
-            <div class="flex flex-col flex-1">
-                <main class="p-4 sm:p-6 max-w-7xl w-full mx-auto">
+            <div class="flex flex-col flex-1 overflow-x-hidden">
+                <main class="p-4 sm:p-6 w-full mx-auto">
                     <slot />
                 </main>
             </div>

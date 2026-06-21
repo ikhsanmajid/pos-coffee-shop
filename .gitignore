@@ -1,28 +1,119 @@
-/.phpunit.cache
+# ==============================
+# Laravel
+# ==============================
+
+# Environment files
+.env
+.env.backup
+.env.production
+.env.staging
+.env.local
+
+# Vendor & dependencies
+/vendor
+composer.phar
+
+# Laravel specific
 /bootstrap/ssr
-/node_modules
 /public/build
 /public/fonts-manifest.dev.json
 /public/hot
 /public/storage
+/storage/*.key
+/storage/pail
+/auth.json
+
+# Laravel Wayfinder (auto-generated)
 /resources/js/actions
 /resources/js/routes
 /resources/js/wayfinder
-/storage/*.key
-/storage/pail
-/vendor
-.env
-.env.backup
-.env.production
-.phpactor.json
+
+# Cache & compiled
+/.phpunit.cache
 .phpunit.result.cache
-Homestead.json
-Homestead.yaml
-npm-debug.log
-yarn-error.log
-/auth.json
+.phpactor.json
+
+# Logs
+/storage/logs/*.log
+laravel.log
+
+# ==============================
+# Node / Vue / Vite
+# ==============================
+
+# Dependencies
+/node_modules
+
+# Debug logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Build output (handled by CI/CD)
+/public/build
+
+# Vite
+*.local
+
+# ==============================
+# OS generated files
+# ==============================
+
+# macOS
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+Thumbs.db
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# Linux
+*~
+
+# ==============================
+# IDE & Editors
+# ==============================
+
 /.fleet
 /.idea
 /.nova
 /.vscode
 /.zed
+*.sublime-project
+*.sublime-workspace
+*.swp
+*.swo
+*~
+
+# ==============================
+# Homestead / Vagrant
+# ==============================
+
+Homestead.json
+Homestead.yaml
+.vagrant
+
+# ==============================
+# Testing & Coverage
+# ==============================
+
+/coverage
+/.phpunit.cache
+.phpunit.result.cache
+/tests/coverage
+
+# ==============================
+# Misc
+# ==============================
+
+*.cache
+*.log
+.idea
+.editorconfig.bak

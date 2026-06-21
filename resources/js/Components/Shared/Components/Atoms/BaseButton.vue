@@ -52,6 +52,7 @@ defineProps({
 
 // Mapping Ukuran Tailwind
 const sizes = {
+    xs: 'w-9 h-9 text-sm',
     sm: 'px-3 py-1.5 text-xs gap-1.5',
     md: 'px-4 py-2.5 text-sm gap-2',
     lg: 'px-5 py-3 text-base gap-2.5'
@@ -65,6 +66,10 @@ const variants = {
 
     danger: 'bg-red-600 text-white hover:bg-red-500 shadow-sm shadow-red-600/10 focus:ring-red-500',
 
-    ghost: 'text-gray-600 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-400 dark:hover:bg-gray-800 dark:hover:text-white focus:ring-gray-500'
+    ghost: 'text-gray-600 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-400 dark:hover:bg-gray-800 dark:hover:text-white focus:ring-gray-500',
+
+    pagination: 'bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 border border-gray-300 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-750 shadow-sm rounded-lg select-none focus:ring-indigo-500',
+
+    paginationActive: 'bg-indigo-600 text-white border border-indigo-600 dark:bg-indigo-500 dark:border-indigo-500 shadow-sm rounded-lg select-none focus:ring-indigo-500'
 };
 </script>
